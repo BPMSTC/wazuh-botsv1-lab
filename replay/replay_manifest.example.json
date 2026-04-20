@@ -5,19 +5,31 @@
     {
       "name": "sysmon-batch-01",
       "input": "etl/output/sysmon.jsonl",
-      "target": "replay/output/sysmon.log",
+      "target": "replay/output/sysmon.jsonl",
       "sleep_ms": 25
     },
     {
-      "name": "winevent-batch-01",
-      "input": "etl/output/winevent.jsonl",
-      "target": "replay/output/winevent.log",
+      "name": "winevent-security-batch-01",
+      "input": "etl/output/winevent-security.jsonl",
+      "target": "replay/output/winevent-security.jsonl",
+      "sleep_ms": 25
+    },
+    {
+      "name": "winevent-system-batch-01",
+      "input": "etl/output/winevent-system.jsonl",
+      "target": "replay/output/winevent-system.jsonl",
+      "sleep_ms": 25
+    },
+    {
+      "name": "winevent-application-batch-01",
+      "input": "etl/output/winevent-application.jsonl",
+      "target": "replay/output/winevent-application.jsonl",
       "sleep_ms": 25
     },
     {
       "name": "iis-batch-01",
       "input": "etl/output/iis.jsonl",
-      "target": "replay/output/iis.log",
+      "target": "replay/output/iis.jsonl",
       "sleep_ms": 25
     }
   ]

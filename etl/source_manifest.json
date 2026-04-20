@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "sources": [
+    {
+      "name": "sysmon",
+      "lane": "sysmon",
+      "sourcetype": "XmlWinEventLog:Microsoft-Windows-Sysmon/Operational",
+      "url": "https://s3.amazonaws.com/botsdataset/botsv1/json-by-sourcetype/botsv1.XmlWinEventLog-Microsoft-Windows-Sysmon-Operational.json.gz",
+      "filename": "botsv1.XmlWinEventLog-Microsoft-Windows-Sysmon-Operational.json.gz"
+    },
+    {
+      "name": "winevent_application",
+      "lane": "winevent",
+      "sourcetype": "WinEventLog:Application",
+      "url": "https://s3.amazonaws.com/botsdataset/botsv1/json-by-sourcetype/botsv1.WinEventLog-Application.json.gz",
+      "filename": "botsv1.WinEventLog-Application.json.gz"
+    },
+    {
+      "name": "winevent_security",
+      "lane": "winevent",
+      "sourcetype": "WinEventLog:Security",
+      "url": "https://s3.amazonaws.com/botsdataset/botsv1/json-by-sourcetype/botsv1.WinEventLog-Security.json.gz",
+      "filename": "botsv1.WinEventLog-Security.json.gz"
+    },
+    {
+      "name": "winevent_system",
+      "lane": "winevent",
+      "sourcetype": "WinEventLog:System",
+      "url": "https://s3.amazonaws.com/botsdataset/botsv1/json-by-sourcetype/botsv1.WinEventLog-System.json.gz",
+      "filename": "botsv1.WinEventLog-System.json.gz"
+    },
+    {
+      "name": "iis",
+      "lane": "iis",
+      "sourcetype": "iis",
+      "url": "https://s3.amazonaws.com/botsdataset/botsv1/json-by-sourcetype/botsv1.iis.json.gz",
+      "filename": "botsv1.iis.json.gz"
+    }
+  ]
+}

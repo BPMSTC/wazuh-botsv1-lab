@@ -33,6 +33,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Replay normalized logs by manifest order.")
     parser.add_argument("--manifest", required=True, help="Path to manifest JSON")
     parser.add_argument("--base-dir", default=".", help="Base directory for relative paths")
+    parser.add_argument("--reset-targets", action="store_true", help="Delete target files before replay starts")
     return parser.parse_args()
 
 
@@ -43,6 +44,16 @@ def main() -> None:
 
     manifest = load_manifest(manifest_path)
     entries = manifest.get("entries", [])
+
+    if args.reset_targets:
+        seen_targets = set()
+        for entry in entries:
+            target = (base_dir / entry["target"]).resolve()
+            if target in seen_targets:
+                continue
+            seen_targets.add(target)
+            if target.exists():
+                target.unlink()
 
     total = 0
     for entry in entries:

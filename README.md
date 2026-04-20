@@ -39,9 +39,11 @@ Use the ETL downloader workflow documented in docs/data-sources.md.
 ## Quick Start
 
 1. Prepare Ubuntu VM with Docker and Docker Compose.
-2. Configure deployment/.env from deployment/.env.example.
-3. Start Wazuh stack using deployment/docker-compose.yml.
-4. Run ETL to normalize BOTSv1 files into replay-ready outputs.
-5. Replay files into Wazuh-monitored paths.
+2. Run `python deployment/bootstrap_wazuh_assets.py` to vendor the pinned Wazuh single-node assets.
+3. Configure deployment/.env from deployment/.env.example.
+4. Start the base single-node stack plus this repository's override compose file.
+5. Run `python etl/download_botsv1.py --decompress` for the selected lanes.
+6. Run ETL to normalize BOTSv1 files into replay-ready outputs.
+7. Replay files into the sidecar agent's monitored paths.
 
 Detailed steps are in runbooks/class-demo.md.

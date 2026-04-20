@@ -1,23 +1,36 @@
 # Deployment Notes
 
-This repository uses a single-node Wazuh deployment for classroom demos.
+This repository uses the official Wazuh Docker single-node assets as the base stack, then layers a lab-specific Compose override on top for replay ingestion and local rules.
+
+## Why This Layout
+
+- Keeps the base Wazuh deployment close to upstream tested assets.
+- Avoids maintaining a hand-copied fork of the full single-node stack.
+- Makes classroom-specific changes small and reviewable.
 
 ## Option B Capacity Guidance
 
-- Use a reduced replay dataset.
-- Keep indexing windows small.
-- Avoid high replay rates.
+- Keep the replay dataset curated and small.
+- Set Docker memory conservatively for the VM.
+- Use controlled replay pacing rather than burst writes.
 
-## Local Bring-up
+## Bootstrap the Base Stack
 
-1. Copy .env.example to .env and set strong passwords.
-2. Start stack from this directory:
+1. Copy `.env.example` to `.env`.
+2. Run the bootstrap script from the repository root:
 
-   docker compose --env-file .env -f docker-compose.yml up -d
+   `python deployment/bootstrap_wazuh_assets.py`
 
-3. Verify containers are healthy and dashboard is reachable.
+3. The script downloads the pinned `wazuh-docker` release archive and extracts the `single-node` assets into `deployment/vendor/wazuh-docker/single-node/`.
 
-## Important
+## Start the Lab Stack
 
-The compose file in this repository is a starting baseline for class use.
-If upstream Wazuh docker assets change, update this file and pin tested versions.
+Run Docker Compose from the repository root using the vendored single-node base file plus this repository's override file:
+
+`docker compose --env-file deployment/.env -f deployment/vendor/wazuh-docker/single-node/docker-compose.yml -f deployment/docker-compose.yml up -d`
+
+## Notes
+
+- The replay agent sidecar tails files written into `replay/output/` and forwards them to the Wazuh manager.
+- This repository's override file mounts `wazuh/local_decoder.xml` and `wazuh/local_rules.xml` into the manager container.
+- Before first startup on Linux, set `vm.max_map_count=262144`.
