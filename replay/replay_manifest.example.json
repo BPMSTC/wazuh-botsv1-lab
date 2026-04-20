@@ -1,0 +1,24 @@
+{
+  "version": "1",
+  "description": "Example deterministic replay order",
+  "entries": [
+    {
+      "name": "sysmon-batch-01",
+      "input": "etl/output/sysmon.jsonl",
+      "target": "replay/output/sysmon.log",
+      "sleep_ms": 25
+    },
+    {
+      "name": "winevent-batch-01",
+      "input": "etl/output/winevent.jsonl",
+      "target": "replay/output/winevent.log",
+      "sleep_ms": 25
+    },
+    {
+      "name": "iis-batch-01",
+      "input": "etl/output/iis.jsonl",
+      "target": "replay/output/iis.log",
+      "sleep_ms": 25
+    }
+  ]
+}

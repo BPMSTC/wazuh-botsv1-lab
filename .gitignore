@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.venv/
+venv/
+
+# OS/editor
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Runtime artifacts
+logs/
+output/
+replay/output/
+replay/state/
+etl/output/
+
+# Data policy: never commit raw BOTSv1 payloads
+data/raw/
+data/cache/
+*.zip
+*.gz
+*.7z
+
+# Environment files
+.env
+.env.local

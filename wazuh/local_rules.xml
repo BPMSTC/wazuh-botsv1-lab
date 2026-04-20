@@ -1,0 +1,16 @@
+<group name="botsv1_lab,">
+  <rule id="100500" level="3">
+    <if_group>sysmon</if_group>
+    <description>BOTSv1 lab Sysmon event observed</description>
+  </rule>
+
+  <rule id="100501" level="3">
+    <field name="lane">winevent</field>
+    <description>BOTSv1 lab Windows event observed</description>
+  </rule>
+
+  <rule id="100502" level="3">
+    <field name="lane">iis</field>
+    <description>BOTSv1 lab IIS event observed</description>
+  </rule>
+</group>
