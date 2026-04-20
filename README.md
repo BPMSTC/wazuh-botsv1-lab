@@ -30,6 +30,7 @@ Out of scope on Day 1:
 - wazuh/: Local decoder/rule overrides
 - runbooks/: Instructor-facing execution guides
 - docs/: Data source and architecture docs
+- documents/: Extended architecture, startup, and classroom demo documentation
 
 ## Data Policy
 
@@ -47,3 +48,4 @@ Use the ETL downloader workflow documented in docs/data-sources.md.
 7. Replay files into the sidecar agent's monitored paths.
 
 Detailed steps are in runbooks/class-demo.md.
+Extended documentation is in documents/README.md.
