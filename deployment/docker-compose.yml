@@ -1,10 +1,7 @@
-version: "3.8"
-
 services:
   wazuh.manager:
     volumes:
-      - ../wazuh/local_decoder.xml:/var/ossec/etc/decoders/local_decoder.xml:ro
-      - ../wazuh/local_rules.xml:/var/ossec/etc/rules/local_rules.xml:ro
+      - ../../../../wazuh/local_rules.xml:/var/ossec/etc/rules/local_rules.xml:ro
 
   wazuh.replay-agent:
     image: wazuh/wazuh-agent:${WAZUH_VERSION:-4.14.4}
@@ -15,7 +12,7 @@ services:
       - WAZUH_MANAGER_SERVER=wazuh.manager
       - WAZUH_AGENT_GROUP=default
     volumes:
-      - ./config/wazuh-agent/ossec.conf:/wazuh-config-mount/etc/ossec.conf:ro
-      - ../replay/output:/replay:ro
+      - ../../../../deployment/config/wazuh-agent/ossec.conf:/wazuh-config-mount/etc/ossec.conf:ro
+      - ../../../../replay/output:/replay
     depends_on:
       - wazuh.manager

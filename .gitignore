@@ -28,3 +28,6 @@ data/cache/
 # Environment files
 .env
 .env.local
+
+# Generated Wazuh deployment certs
+deployment/vendor/wazuh-docker/single-node/config/wazuh_indexer_ssl_certs/

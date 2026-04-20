@@ -1,6 +1,6 @@
 <group name="botsv1_lab,">
   <rule id="100500" level="3">
-    <if_group>sysmon</if_group>
+    <field name="lane">sysmon</field>
     <description>BOTSv1 lab Sysmon event observed</description>
   </rule>
 

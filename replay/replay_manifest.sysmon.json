@@ -1,0 +1,12 @@
+{
+  "version": "1",
+  "description": "Minimal Sysmon-only replay for local validation",
+  "entries": [
+    {
+      "name": "sysmon-batch-01",
+      "input": "etl/output/sysmon.jsonl",
+      "target": "replay/output/sysmon.jsonl",
+      "sleep_ms": 5
+    }
+  ]
+}
